@@ -81,6 +81,13 @@ public class DailyFragment extends Fragment {
         mCity = city;
         refreshData();
     }
+    public static DailyFragment newInstance(String city) {
+        DailyFragment fragment = new DailyFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_CITY, city);
+        fragment.setArguments(args);
+        return fragment;
+    }
     private void refreshData(){
         mRefreshLayout.setRefreshing(true);
         Call apiCall = OpenWeatherSingleton.getInstance().getCurrentWeatherByCity(mCity);
