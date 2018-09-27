@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Location"
+        android:key="pref_key_location">
+        <EditTextPreference
+            android:key="pref_key_city_name"
+            android:title="City Name"
+            android:summary="Input name of City"
+            android:defaultValue="Vancouver" />
 
+    </PreferenceCategory>
 </PreferenceScreen>
