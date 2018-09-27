@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+    buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId "com.weatherforecast_app.weatherforecast_app"
         minSdkVersion 14
@@ -12,7 +13,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -26,4 +27,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.7.0'
+    implementation 'com.pavelsikun:materialdesignicons:1.0'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+
+    implementation 'com.takisoft.fix:preference-v7:25.3.1.0'
 }
