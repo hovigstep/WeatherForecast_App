@@ -1,9 +1,15 @@
 package com.weatherforecast_app.weatherforecast_app.util;
 
 import okhttp3.Call;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 public class OpenWeatherSingleton {
+    private String appid = "c6e381d8c7ff98f0fee43775817cf6ad";
+    private String api_server = "http://api.openweathermap.org/data/2.5/";
+    private OkHttpClient client = new OkHttpClient();
+    private static OpenWeatherSingleton instance = null;
+
     public OpenWeatherSingleton() {
     }
 
