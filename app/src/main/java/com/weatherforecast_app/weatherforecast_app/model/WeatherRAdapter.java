@@ -4,11 +4,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.weatherforecast_app.weatherforecast_app.R;
 import com.weatherforecast_app.weatherforecast_app.util.OpenWeatherSingleton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class WeatherRAdapter extends RecyclerView.Adapter<WeatherRAdapter.ListItemViewHolder>{
     ArrayList<WeatherModel> weatherModelArrayList;
@@ -32,6 +38,27 @@ public class WeatherRAdapter extends RecyclerView.Adapter<WeatherRAdapter.ListIt
         holder.textDate.setText(format.format(model.getDate()));
         holder.textTemp.setText(String.format("%.0f°C",
                 Double.parseDouble(model.getTemp())));
+    }
+
+    @Override
+    public int getItemCount() {
+        return weatherModelArrayList.size();
+    }
+
+    public class ListItemViewHolder  extends RecyclerView.ViewHolder{
+        @BindView(R.id.textDate)
+        TextView textDate;
+
+        @BindView(R.id.ivWeather)
+        ImageView ivWeather;
+
+        @BindView(R.id.textTemp)
+        TextView textTemp;
+
+        public ListItemViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
     }
 
 }

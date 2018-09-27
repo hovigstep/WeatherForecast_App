@@ -1,5 +1,7 @@
 package com.weatherforecast_app.weatherforecast_app.util;
 
+import com.weatherforecast_app.weatherforecast_app.R;
+
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -43,7 +45,6 @@ public class OpenWeatherSingleton {
 
         return client.newCall(request);
     }
-
     public int getIconFromWeather(String weather){
         weather = weather.toLowerCase();
         if(weather.contains("cloud")) return R.drawable.zzz_weather_cloudy;
