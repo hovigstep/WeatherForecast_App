@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+
     private SparseIntArray mErrorString = new SparseIntArray();
     private static final int REQUEST_PERMISSIONS = 20;
     @Override
@@ -88,7 +89,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         displayView(id);
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         }
 
-        // set the toolbar title
+        // set toolbar title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }

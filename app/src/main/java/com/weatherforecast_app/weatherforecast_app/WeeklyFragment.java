@@ -42,15 +42,9 @@ public class WeeklyFragment extends Fragment {
     RecyclerView viewWeather;
 
     public WeeklyFragment() {
-        // Required empty public constructor
+        // empty public constructor
     }
-    public static WeeklyFragment newInstance(String location) {
-        WeeklyFragment fragment = new WeeklyFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_CITY, location);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +66,13 @@ public class WeeklyFragment extends Fragment {
         });
         refreshData();
         return view;
+    }
+    public static WeeklyFragment newInstance(String location) {
+        WeeklyFragment fragment = new WeeklyFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_CITY, location);
+        fragment.setArguments(args);
+        return fragment;
     }
     private void refreshData(){
         mRefreshLayout.setRefreshing(true);
