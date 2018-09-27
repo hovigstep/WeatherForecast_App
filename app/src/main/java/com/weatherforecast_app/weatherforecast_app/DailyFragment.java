@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.weatherforecast_app.weatherforecast_app.util.OpenWeatherSingleton;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

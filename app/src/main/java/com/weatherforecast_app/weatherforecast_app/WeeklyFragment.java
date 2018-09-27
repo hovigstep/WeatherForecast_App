@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.weatherforecast_app.weatherforecast_app.model.WeatherModel;
+import com.weatherforecast_app.weatherforecast_app.model.WeatherRAdapter;
+import com.weatherforecast_app.weatherforecast_app.util.OpenWeatherSingleton;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,9 +31,7 @@ import okhttp3.Response;
 
 public class WeeklyFragment extends Fragment {
     private static final String ARG_CITY = "param1";
-
     private String mCity;
-
     @BindView(R.id.weekly_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
 
@@ -71,7 +73,6 @@ public class WeeklyFragment extends Fragment {
         refreshData();
         return view;
     }
-
     private void refreshData(){
         mRefreshLayout.setRefreshing(true);
         Call apiCall = OpenWeatherSingleton.getInstance().getForecastByCity(mCity);
@@ -117,12 +118,10 @@ public class WeeklyFragment extends Fragment {
 
                                     weatherModelArrayList.add(new WeatherModel(objWeather, objTemp, objDate));
                                 }
-
                                 WeatherRAdapter weatherAdapter = new WeatherRAdapter(weatherModelArrayList);
                                 viewWeather.setLayoutManager(new LinearLayoutManager(getActivity(),
                                         LinearLayoutManager.HORIZONTAL, false));
                                 viewWeather.setAdapter(weatherAdapter);
-
                             }
                         } catch (JSONException e) {
                             Log.e("SimpleWeather", Log.getStackTraceString(e));
