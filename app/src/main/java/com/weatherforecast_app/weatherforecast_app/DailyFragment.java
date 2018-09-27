@@ -6,10 +6,37 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DailyFragment extends Fragment {
+    private static final String ARG_CITY = "param1";
+
+    private String mCity;
+
+    @BindView(R.id.daily_refresh_layout)
+    SwipeRefreshLayout mRefreshLayout;
+
+    @BindView(R.id.textCity)
+    TextView textCity;
+
+    @BindView(R.id.ivWeather)
+    ImageView ivWeather;
+
+    @BindView(R.id.textTemp)
+    TextView textTemp;
+
+    @BindView(R.id.textTempMin)
+    TextView textTempMin;
+
+    @BindView(R.id.textTempMax)
+    TextView textTempMax;
+
+    @BindView(R.id.textTempSeparator)
+    TextView textTempSeparator;
 
     public DailyFragment() {
         // Empty public constructor
@@ -38,7 +65,6 @@ public class DailyFragment extends Fragment {
 
         return view;
     }
-
     public void changeCity(String city){
         mCity = city;
         refreshData();
