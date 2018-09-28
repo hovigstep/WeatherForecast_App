@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BookmarksFragment"
-    android:id="@+id/bookmarks_refresh_layout">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:weightSum="1"
+        tools:context=".BookmarksFragment"
+        android:id="@+id/bookmarks_refresh_layout"
+        >
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/btnAddItem"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            />
 
         <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" >
-        </ListView>
+            android:id="@+id/LvItems"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/btnAddItem"
+            android:stackFromBottom="false"
+            android:transcriptMode="alwaysScroll"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etNewItem"
+            android:layout_below="@+id/LvItems"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/btnAddItem"
+            android:hint="Add your Bookmark"
+
+            />
     </RelativeLayout>
-</android.support.v4.widget.SwipeRefreshLayout>
