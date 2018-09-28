@@ -26,7 +26,6 @@ import okhttp3.Response;
 
 public class DailyFragment extends Fragment {
     private static final String ARG_CITY = "param1";
-
     private String mCity;
 
     @BindView(R.id.daily_refresh_layout)

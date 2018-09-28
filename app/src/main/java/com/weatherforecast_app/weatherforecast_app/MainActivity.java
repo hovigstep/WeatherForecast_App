@@ -100,14 +100,22 @@ public class MainActivity extends AppCompatActivity
         String cityName = sharedPref.getString("pref_key_city_name", "");
 
         switch (viewId) {
+
             case R.id.nav_daily_forecast:
                 fragment = DailyFragment.newInstance(cityName);
                 title = "Daily";
                 break;
+
             case R.id.nav_weekly_forecast:
                 fragment = WeeklyFragment.newInstance(cityName);
                 title = "Weekly";
                 break;
+
+            case R.id.nav_bookmarks:
+                fragment = BookmarksFragment.newInstance(cityName);
+                title= "Bookmarks";
+                break;
+
             case  R.id.nav_settings:
                 fragment = new SettingsFragment();
                 title = "Settings";

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookmarksFragment"
+    android:id="@+id/bookmarks_refresh_layout">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
         <ListView
             android:id="@+id/listView1"
@@ -11,3 +19,4 @@
             android:layout_alignParentTop="true" >
         </ListView>
     </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

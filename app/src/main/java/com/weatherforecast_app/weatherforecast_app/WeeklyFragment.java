@@ -32,6 +32,7 @@ import okhttp3.Response;
 public class WeeklyFragment extends android.support.v4.app.Fragment {
     private static final String ARG_CITY = "param1";
     private String mCity;
+
     @BindView(R.id.weekly_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
 
