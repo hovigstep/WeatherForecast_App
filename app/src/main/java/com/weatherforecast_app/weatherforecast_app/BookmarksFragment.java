@@ -32,7 +32,7 @@ public class BookmarksFragment extends Fragment implements View.OnClickListener 
     private String mCity;
 
     @BindView(R.id.bookmarks_refresh_layout)
-    LinearLayout mRefreshLayout;
+    SwipeRefreshLayout mRefreshLayout;
 
     @BindView(R.id.list)
     ListView lvItems;
@@ -78,14 +78,6 @@ public class BookmarksFragment extends Fragment implements View.OnClickListener 
         return view;
     }
 
-    public void addItem() {
-        EditText etNewItem = (EditText) getView().findViewById(R.id.etNewItem);
-        String itemText = etNewItem.getText().toString();
-        items.add(itemText);
-        etNewItem.setText(" ");
-        lvItems.setSelection(itemsAdapter.getCount() - 1);
-    }
-
     public void setupListViewListener() {
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -103,5 +95,12 @@ public class BookmarksFragment extends Fragment implements View.OnClickListener 
             addItem();
         }
 
+    }
+    public void addItem() {
+        EditText etNewItem = (EditText) getView().findViewById(R.id.etNewItem);
+        String itemText = etNewItem.getText().toString();
+        items.add(itemText);
+        etNewItem.setText(" ");
+        lvItems.setSelection(itemsAdapter.getCount() - 1);
     }
 }
