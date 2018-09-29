@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:weightSum="1"
-        tools:context=".BookmarksFragment"
-        android:id="@+id/bookmarks_refresh_layout"
-        >
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookmarksFragment"
+    android:id="@+id/bookmarks_refresh_layout"
+    android:orientation="vertical">
 
         <Button
             android:layout_width="wrap_content"
@@ -25,7 +20,7 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/LvItems"
+            android:id="@+id/list"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_above="@+id/btnAddItem"
@@ -43,4 +38,4 @@
             android:hint="Add your Bookmark"
 
             />
-    </RelativeLayout>
+</LinearLayout>

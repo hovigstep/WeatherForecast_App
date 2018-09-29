@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -23,7 +25,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BookmarksFragment extends Fragment implements View.OnClickListener {
-
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
 
@@ -31,9 +32,9 @@ public class BookmarksFragment extends Fragment implements View.OnClickListener 
     private String mCity;
 
     @BindView(R.id.bookmarks_refresh_layout)
-    RelativeLayout mRefreshLayout;
+    LinearLayout mRefreshLayout;
 
-    @BindView(R.id.LvItems)
+    @BindView(R.id.list)
     ListView lvItems;
 
     @BindView(R.id.etNewItem)
@@ -67,21 +68,21 @@ public class BookmarksFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflating layout for fragment
-        View view = inflater.inflate(R.layout.bookmarks_fragment, container, false);
+        View view = (ViewGroup) inflater.inflate(R.layout.bookmarks_fragment, container, false);
         ButterKnife.bind(this, view);
-
-        ListView lvItems = (ListView) view.findViewById(R.id.LvItems);
-        items = new ArrayList<>();
-        itemsAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, items);
+        ArrayList<String> items = new ArrayList<>();
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
+        items.add("turbo");
         setupListViewListener();
         return view;
     }
 
     public void addItem() {
-        String itemText = et.getText().toString();
+        EditText etNewItem = (EditText) getView().findViewById(R.id.etNewItem);
+        String itemText = etNewItem.getText().toString();
         items.add(itemText);
-        et.setText(" ");
+        etNewItem.setText(" ");
         lvItems.setSelection(itemsAdapter.getCount() - 1);
     }
 
