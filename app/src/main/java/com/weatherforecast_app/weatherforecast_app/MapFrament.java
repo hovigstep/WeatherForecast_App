@@ -144,7 +144,6 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
         Log.d(TAG, "geoLocate: geolocating");
 
         String searchString = mSearchText.getText().toString();
-
         Geocoder geocoder = new Geocoder(MapFrament.this);
         List<Address> list = new ArrayList<>();
         try{

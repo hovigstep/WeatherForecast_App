@@ -31,7 +31,7 @@ public class BookmarksFragment extends FragmentActivity {
     private String mCity;
 
 
-    ArrayList<String> items;
+    public ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
     EditText et;
@@ -67,5 +67,14 @@ public class BookmarksFragment extends FragmentActivity {
                 return true;
             }
         });
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mapfragment = new Intent(BookmarksFragment.this, MapFrament.class);
+                startActivity(mapfragment);
+            }
+        });
+
     }
 }

@@ -140,12 +140,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 title = "Weekly";
                 break;
 
-            case R.id.nav_bookmarks:
-                Intent bookmarkfragment = new Intent(MainActivity.this, BookmarksFragment.class);
-                startActivity(bookmarkfragment);
-                title= "Bookmarks";
-                break;
-
             case  R.id.nav_settings:
                 fragment = new SettingsFragment();
                 title = "Settings";
@@ -155,6 +149,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(MainActivity.this, MapFrament.class);
                 startActivity(intent);
                 title = "Map";
+                break;
+
+            case R.id.nav_bookmarks:
+                Intent bookmarkfragment = new Intent(MainActivity.this, BookmarksFragment.class);
+                startActivity(bookmarkfragment);
+                title= "Bookmarks";
                 break;
         }
 
