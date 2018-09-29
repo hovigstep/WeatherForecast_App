@@ -59,17 +59,14 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback {
         }
     }
 
-    private static final String TAG = "MapActivity";
-
+    private static final String TAG = "MapFragment";
     private static final String FINE_LOCATION = android.Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = android.Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
-
     //widgets
     private EditText mSearchText;
     private ImageView mGps;
-
     //vars
     private Boolean mLocationPermissionsGranted = false;
     private GoogleMap mMap;
@@ -172,7 +169,19 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback {
         }
     }
 
+    private void moveCamera(LatLng latLng, float zoom, String title){
+        Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
+        if(!title.equals("My Location")){
+            MarkerOptions options = new MarkerOptions()
+                    .position(latLng)
+                    .title(title);
+            mMap.addMarker(options);
+        }
+
+        hideSoftKeyboard();
+    }
 
     private void initMap(){
         Log.d(TAG, "initMap: initializing map");
