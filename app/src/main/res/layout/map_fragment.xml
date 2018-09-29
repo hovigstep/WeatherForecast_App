@@ -41,6 +41,14 @@
             android:hint="Enter Address, City or Zip Code"
             android:imeOptions="actionSearch"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/input"
+            android:text="Search"/>
+
 
     </RelativeLayout>
 
