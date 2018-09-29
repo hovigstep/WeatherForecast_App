@@ -16,7 +16,6 @@
         android:weightSum="1"
         >
 
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,18 +23,20 @@
             android:id="@+id/btnAddItem"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            />
+            android:onClick="addItem"/>
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/LvItems"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_above="@+id/btnAddItem"
             android:stackFromBottom="false"
             android:transcriptMode="alwaysScroll"
-            android:id="@id/android:list"
             />
+
+
 
         <EditText
             android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
             android:layout_below="@+id/LvItems"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/btnAddItem"
-            android:hint="Add your Bookmark"
+            android:hint="Add your task"
 
             />
     </RelativeLayout>

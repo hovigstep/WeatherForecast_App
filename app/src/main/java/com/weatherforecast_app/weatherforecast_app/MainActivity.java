@@ -13,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -140,7 +141,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_bookmarks:
-                fragment = BookmarksFragment.newInstance(cityName);
+                Intent bookmarkfragment = new Intent(MainActivity.this, BookmarksFragment.class);
+                startActivity(bookmarkfragment);
                 title= "Bookmarks";
                 break;
 

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -24,58 +25,37 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BookmarksFragment extends ListFragment implements View.OnClickListener {
-    ArrayList<String> items;
-    ArrayAdapter<String> itemsAdapter;
+public class BookmarksFragment extends FragmentActivity {
 
     private static final String ARG_CITY = "param1";
     private String mCity;
 
-    @BindView(R.id.bookmarks_refresh_layout)
-    SwipeRefreshLayout mRefreshLayout;
 
-    @BindView(R.id.list)
+    ArrayList<String> items;
+    ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
-
-    @BindView(R.id.etNewItem)
     EditText et;
 
-    @BindView(R.id.btnAddItem)
-    Button AddButton;
-
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mCity = getArguments().getString(ARG_CITY);
-        }
-    }
+        setContentView(R.layout.bookmarks_fragment);
+        lvItems = (ListView) findViewById(R.id.LvItems);
+        et = (EditText) findViewById(R.id.etNewItem);
+        items = new ArrayList<>();
 
-
-    public BookmarksFragment(){
-
-    }
-    public static BookmarksFragment newInstance(String city) {
-        BookmarksFragment fragment = new BookmarksFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_CITY, city);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflating layout for fragment
-        View view = (ViewGroup) inflater.inflate(R.layout.bookmarks_fragment, container, false);
-        ButterKnife.bind(this, view);
-        ArrayList<String> items = new ArrayList<>();
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, items);
+        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
-        items.add("turbo");
         setupListViewListener();
-        return view;
+
+    }
+
+    public void addItem(View v) {
+        EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
+        String itemText = etNewItem.getText().toString();
+        items.add(itemText);
+        etNewItem.setText(" ");
+        lvItems.setSelection(itemsAdapter.getCount() - 1);
     }
 
     public void setupListViewListener() {
@@ -87,20 +67,5 @@ public class BookmarksFragment extends ListFragment implements View.OnClickListe
                 return true;
             }
         });
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v == AddButton){
-            addItem();
-        }
-
-    }
-    public void addItem() {
-        EditText etNewItem = (EditText) getView().findViewById(R.id.etNewItem);
-        String itemText = etNewItem.getText().toString();
-        items.add(itemText);
-        etNewItem.setText(" ");
-        lvItems.setSelection(itemsAdapter.getCount() - 1);
     }
 }
