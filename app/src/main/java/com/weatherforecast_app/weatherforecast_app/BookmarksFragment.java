@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BookmarksFragment extends Fragment implements View.OnClickListener {
+public class BookmarksFragment extends ListFragment implements View.OnClickListener {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
 

@@ -54,7 +54,6 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback {
             }
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
             init();
         }
     }
@@ -78,9 +77,8 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback {
         setContentView(R.layout.map_fragment);
         mSearchText = (EditText) findViewById(R.id.input_search);
         mGps = (ImageView) findViewById(R.id.ic_gps);
-
         getLocationPermission();
-
+        init();
     }
 
     private void init(){
