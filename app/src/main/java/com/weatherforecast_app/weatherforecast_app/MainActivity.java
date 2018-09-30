@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case  R.id.nav_help:
-                fragment = new SettingsFragment();
+                fragment = new HelpFragment();
                 title = "Help";
                 break;
 
