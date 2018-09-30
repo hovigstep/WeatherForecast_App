@@ -27,7 +27,7 @@ import okhttp3.Response;
 public class DailyFragment extends Fragment {
     private static final String ARG_CITY = "param1";
     private String mCity;
-
+    //Binding Items to Views
     @BindView(R.id.daily_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
 
@@ -50,7 +50,7 @@ public class DailyFragment extends Fragment {
     TextView textTempSeparator;
 
     public DailyFragment() {
-        // Empty public constructor
+        // Empty public constructor (necessary)
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,13 +59,13 @@ public class DailyFragment extends Fragment {
             mCity = getArguments().getString(ARG_CITY);
         }
     }
+    //When the view is displaying
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflating layout for fragment
         View view = inflater.inflate(R.layout.daily_frament, container, false);
         ButterKnife.bind(this, view);
-
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -73,13 +73,13 @@ public class DailyFragment extends Fragment {
             }
         });
         refreshData();
-
         return view;
     }
     public void changeCity(String city){
         mCity = city;
         refreshData();
     }
+    //New instance of this class creator
     public static DailyFragment newInstance(String city) {
         DailyFragment fragment = new DailyFragment();
         Bundle args = new Bundle();
@@ -87,6 +87,7 @@ public class DailyFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    //Data refresh function
     private void refreshData(){
         mRefreshLayout.setRefreshing(true);
         Call apiCall = OpenWeatherSingleton.getInstance().getCurrentWeatherByCity(mCity);
@@ -103,7 +104,7 @@ public class DailyFragment extends Fragment {
                     }
                 });
             }
-
+//On response
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);

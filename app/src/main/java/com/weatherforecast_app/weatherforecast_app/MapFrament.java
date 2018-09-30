@@ -52,15 +52,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
+    //When Map is ready
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
-
         if (mLocationPermissionsGranted) {
             getDeviceLocation();
-
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -68,23 +67,19 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
             }
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
             init();
         }
     }
-
+    //Declarations
     private static final String TAG = "MapActivity";
-
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
-
     //widgets
     private EditText mSearchText;
     private ImageView mGps;
     private Button search;
-
     //vars
     private Boolean mLocationPermissionsGranted = false;
     private GoogleMap mMap;
@@ -97,11 +92,10 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
         mSearchText = (EditText) findViewById(R.id.input_search);
         mGps = (ImageView) findViewById(R.id.ic_gps);
         search = (Button) findViewById(R.id.input);
-
         getLocationPermission();
 
     }
-
+//Function to Initialize map
     private void init(){
         Log.d(TAG, "init: initializing");
 
@@ -139,7 +133,7 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
 
         hideSoftKeyboard();
     }
-
+//Geolocate function
     private void geoLocate(){
         Log.d(TAG, "geoLocate: geolocating");
 
@@ -162,7 +156,7 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
                     address.getAddressLine(0));
         }
     }
-
+//Getting Device Location
     private void getDeviceLocation(){
         Log.d(TAG, "getDeviceLocation: getting the devices current location");
 
@@ -194,6 +188,7 @@ public class MapFrament extends FragmentActivity implements OnMapReadyCallback{
             Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
         }
     }
+    //Moving Camera
     private void moveCamera(LatLng latLng, float zoom, String title){
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));

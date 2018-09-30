@@ -32,7 +32,7 @@ import okhttp3.Response;
 public class WeeklyFragment extends android.support.v4.app.Fragment {
     private static final String ARG_CITY = "param1";
     private String mCity;
-
+    //Initial Binding of Butterknife and Items
     @BindView(R.id.weekly_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
 
@@ -43,7 +43,7 @@ public class WeeklyFragment extends android.support.v4.app.Fragment {
     RecyclerView viewWeather;
 
     public WeeklyFragment() {
-        // empty public constructor
+        // empty public constructor (Necessary)
     }
 
     @Override
@@ -68,6 +68,7 @@ public class WeeklyFragment extends android.support.v4.app.Fragment {
         refreshData();
         return view;
     }
+    //New Instance of class creator
     public static WeeklyFragment newInstance(String location) {
         WeeklyFragment fragment = new WeeklyFragment();
         Bundle args = new Bundle();
@@ -75,6 +76,7 @@ public class WeeklyFragment extends android.support.v4.app.Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    //Data Refreshor
     private void refreshData(){
         mRefreshLayout.setRefreshing(true);
         Call apiCall = OpenWeatherSingleton.getInstance().getForecastByCity(mCity);
@@ -92,6 +94,7 @@ public class WeeklyFragment extends android.support.v4.app.Fragment {
                 });
             }
 
+            //On Response Call
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);

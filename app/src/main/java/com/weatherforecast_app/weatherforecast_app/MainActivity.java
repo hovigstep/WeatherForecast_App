@@ -38,6 +38,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //Binders
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-
+    //Initializers
     private SparseIntArray mErrorString = new SparseIntArray();
     private static final String TAG = "MainActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Butterknife Binding
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -71,10 +73,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public boolean isServicesOK(){
+        //loggging Activity
         Log.d(TAG, "isServicesOK: checking google services version");
-
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
-
         if(available == ConnectionResult.SUCCESS){
             //everything is fine and the user can make map requests
             Log.d(TAG, "isServicesOK: Google Play Services is working");
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    //Navigation Selection
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -122,14 +124,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
     public void displayView(int viewId) {
-
+        //View cases
         Fragment fragment = null;
         String title = getString(R.string.app_name);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String cityName = sharedPref.getString("pref_key_city_name", "");
-
         switch (viewId) {
-
             case R.id.nav_daily_forecast:
                 fragment = DailyFragment.newInstance(cityName);
                 title = "Daily";
@@ -157,18 +157,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 title= "Bookmarks";
                 break;
         }
-
+        //no fragment selected
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
             ft.commit();
         }
-
         // set toolbar title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }
     }
+    //requesting permission's
     public void requestAppPermissions(final String[] requestedPermissions,
                                       final int stringId, final int requestCode) {
         mErrorString.put(requestCode, stringId);
@@ -178,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             permissionCheck = permissionCheck + ContextCompat.checkSelfPermission(this, permission);
             shouldShowRequestPermissionRationale = shouldShowRequestPermissionRationale || ActivityCompat.shouldShowRequestPermissionRationale(this, permission);
         }
+        //if Ok
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             if (shouldShowRequestPermissionRationale) {
                 Snackbar.make(findViewById(android.R.id.content), stringId,
@@ -193,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+    //Permission Results Analysis
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

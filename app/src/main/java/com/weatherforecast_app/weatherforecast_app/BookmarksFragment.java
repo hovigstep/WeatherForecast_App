@@ -26,11 +26,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BookmarksFragment extends FragmentActivity {
-
+//Initial Declarations's
     private static final String ARG_CITY = "param1";
     private String mCity;
-
-
     public ArrayList<String> items= new ArrayList<>();
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
@@ -47,7 +45,7 @@ public class BookmarksFragment extends FragmentActivity {
         lvItems.setAdapter(itemsAdapter);
         setupListViewListener();
     }
-
+// Adding Item To List
     public void addItem(View v) {
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         String itemText = etNewItem.getText().toString();
@@ -55,7 +53,7 @@ public class BookmarksFragment extends FragmentActivity {
         etNewItem.setText(" ");
         lvItems.setSelection(itemsAdapter.getCount() - 1);
     }
-
+//List Cange Listener
     public void setupListViewListener() {
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
