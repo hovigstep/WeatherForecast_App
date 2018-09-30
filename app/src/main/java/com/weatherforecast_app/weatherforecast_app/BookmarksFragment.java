@@ -31,7 +31,7 @@ public class BookmarksFragment extends FragmentActivity {
     private String mCity;
 
 
-    public ArrayList<String> items;
+    public ArrayList<String> items= new ArrayList<>();
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
     EditText et;
@@ -43,11 +43,9 @@ public class BookmarksFragment extends FragmentActivity {
         lvItems = (ListView) findViewById(R.id.LvItems);
         et = (EditText) findViewById(R.id.etNewItem);
         items = new ArrayList<>();
-
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
         setupListViewListener();
-
     }
 
     public void addItem(View v) {
