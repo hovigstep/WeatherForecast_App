@@ -145,6 +145,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 title = "Settings";
                 break;
 
+            case  R.id.nav_help:
+                fragment = new SettingsFragment();
+                title = "Help";
+                break;
+
             case R.id.nav_map:
                 Intent intent = new Intent(MainActivity.this, MapFrament.class);
                 startActivity(intent);
