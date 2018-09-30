@@ -5,6 +5,9 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_welcome"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_daily_forecast"
             android:title="Daily Forecast" />
         <item

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Manifest.permission.ACCESS_COARSE_LOCATION
                 }, R.string.runtime_permissions_txt
                 , REQUEST_PERMISSIONS);
-        displayView(R.id.nav_daily_forecast);
+        displayView(R.id.nav_welcome);
     }
 
     public boolean isServicesOK(){
@@ -148,6 +148,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case  R.id.nav_help:
                 fragment = new HelpFragment();
                 title = "Help";
+                break;
+
+            case  R.id.nav_welcome:
+                fragment = new WelcomeFragment();
+                title = "Welcome";
                 break;
 
             case R.id.nav_map:
